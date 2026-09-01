@@ -10,6 +10,7 @@ body, html {
 }
 
 /* ===== Layout: full-screen on mobile, centered card on larger screens ===== */
+/* ===== Layout: full-screen at every breakpoint ===== */
 
 .container-fluid {
 	height: 100%;
@@ -33,6 +34,7 @@ body, html {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+	width: 100%;
 	border-radius: 0 !important;
 	border: none !important;
 	background-color: rgba(0,0,0,0.4) !important;
@@ -55,6 +57,14 @@ body, html {
 	flex: 1;
 	overflow-y: auto;
 	padding: 1rem;
+	max-width: 900px;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.card-footer form {
+	max-width: 900px;
+	margin: 0 auto;
 }
 
 .contacts_body {
