@@ -22,7 +22,7 @@
 						<div class="card-header msg_head">
 							<div class="d-flex bd-highlight">
 								<div class="img_cont">
-									<img src="{{ url_for('static', filename='docky-avatar.png') }}" class="rounded-circle user_img">
+									<img src="{{ url_for('static', filename='docky-avatar.jpeg') }}" class="rounded-circle user_img">
 									<span class="online_icon"></span>
 								</div>
 								<div class="user_info">
@@ -49,7 +49,7 @@
 		</div>
 		
 		<script>
-			const dockyAvatar = "{{ url_for('static', filename='docky-avatar.png') }}";
+			const dockyAvatar = "{{ url_for('static', filename='docky-avatar.jpeg') }}";
 
 			$(document).ready(function() {
 				$("#messageArea").on("submit", function(event) {
