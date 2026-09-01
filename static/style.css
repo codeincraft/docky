@@ -9,7 +9,6 @@ body, html {
 	background: linear-gradient(to right, rgb(38, 51, 61), rgb(50, 55, 65), rgb(33, 33, 78));
 }
 
-/* ===== Layout: full-screen on mobile, centered card on larger screens ===== */
 /* ===== Layout: full-screen at every breakpoint ===== */
 
 .container-fluid {
@@ -75,42 +74,6 @@ body, html {
 
 .container {
 	align-content: center;
-}
-
-/* Tablet and up: constrain to a centered, rounded card */
-@media (min-width: 768px) {
-	.container-fluid {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 2rem;
-	}
-
-	.chat {
-		width: 100%;
-		max-width: 600px;
-		height: 85vh;
-		max-height: 700px;
-	}
-
-	.card {
-		border-radius: 15px !important;
-	}
-
-	.card-header {
-		border-radius: 15px 15px 0 0 !important;
-	}
-
-	.card-footer {
-		border-radius: 0 0 15px 15px !important;
-	}
-}
-
-/* Larger desktops: slightly wider chat window */
-@media (min-width: 1200px) {
-	.chat {
-		max-width: 700px;
-	}
 }
 
 /* ===== Search bar (if used elsewhere) ===== */
