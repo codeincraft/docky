@@ -10,13 +10,11 @@ from src.prompt import *
 import os
 
 app = Flask(__name__)
-
 load_dotenv()
 
 PINECONE_API_KEY=os.environ.get('PINECONE_API_KEY')
 OPENAI_API_KEY=os.environ.get('OPENAI_API_KEY')
 HF_TOKEN = os.environ.get('HF_TOKEN')
-
 
 os.environ["HF_TOKEN"] = HF_TOKEN
 os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY
@@ -24,17 +22,15 @@ os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
 embeddings = download_hugging_face_embeddings()
 
-
 index_name = "docky"
 
-# Embed each chunk and upsert the embeddings into your Pinecone index.
+# Embed each chunk and upsert the embeddings into  Pinecone index.
 docsearch = PineconeVectorStore.from_existing_index(
     index_name=index_name,
     embedding=embeddings
 )
 
 retriever = docsearch.as_retriever(search_type="similarity", search_kwargs={"k":3})
-
 
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.4, max_tokens=500)
 prompt = ChatPromptTemplate.from_messages(
@@ -46,7 +42,6 @@ prompt = ChatPromptTemplate.from_messages(
 
 question_answer_chain = create_stuff_documents_chain(llm, prompt)
 rag_chain = create_retrieval_chain(retriever, question_answer_chain)
-
 
 @app.route("/")
 def index():
@@ -61,9 +56,6 @@ def chat():
     response = rag_chain.invoke({"input": msg})
     print("Response : ", response["answer"])
     return str(response["answer"])
-
-
-
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port= 8080, debug= True)
